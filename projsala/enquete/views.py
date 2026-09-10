@@ -12,7 +12,7 @@ alternativas=[
 
 def index(request):
     contexto = {
-        'pergunta': 'Какой ваш любимый цвет?',
+        'pergunta': 'Qual seu framework web favorito?',
         'alternativas': alternativas ,
     }
     return render(request, 'enquete/index.html', context=contexto)
@@ -23,4 +23,6 @@ def votar(request):
     alternativa=alternativas[opcao-1]
     alternativa['votos']+=1
 
-    return HttpResponse(alternativas)
+    contexto={'alternativas':alternativas}
+
+    return render(request,'enquete/resultado.html',contexto)
