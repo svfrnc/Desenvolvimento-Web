@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exemplo 01</title>
 </head>
 <body>
     <ul id="cursos"></ul>
-    <button id="btn"name="clickbotao">Clique aqui</button>
+    <button id="btn">Clique Aqui</button>
     <script>
-       const cursos=["django", "java", "C++"];
-       const lista=document.getElementById("cursos");
-        
-        for (let i=0;i<cursos.length;i++){
+        const cursos=["Django","Java","C++"];
+        const lista=document.getElementById("cursos");
+        for(let i=0;i<cursos.length;i++){
             let item=document.createElement("li");
             item.innerText=cursos[i];
             lista.appendChild(item);
-       }
+        }
     </script>
     <script>
-        document.getElementById("btn").addEventListener("click", clickbotao);
+        const cliqueBotao=()=>{
+                alert("Botão Clicado!");
+            };
+        document.getElementById("btn").addEventListener("dblclick",cliqueBotao);
     </script>
 </body>
 </html>
