@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 # Create your views here.
 
 def index (request):
@@ -14,6 +14,9 @@ def tabuada2(request):
         texto += f'<h1>{n} x {numero} ={resultado}</h1>'
     return HttpResponse(texto)
 
+def mensagem(request):
+    dicionario={'mensagem':'olá IMC - DEV WEB'}
+    return JsonResponse(dicionario)
 
 def calcular_imc(request):
     altura=float(request.GET.get("altura"))

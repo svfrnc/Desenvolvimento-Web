@@ -7,4 +7,5 @@ urlpatterns = [
     path("nome", views.meu_nome,name='nome'),
     path("tabuada2/", views.tabuada2,name='tabuada2'),
     path("calcular/", views.calcular_imc,name='calcular_imc')
+    path("mensagem/", views.mensagem,name='mensagem')
 ]
