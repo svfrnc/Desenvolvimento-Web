@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de IMC</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    {% load static %}
-    <script src="{% static 'projsala/static/imc/js/script02.js' %}"
-
+    {% load static%}
+    <script src="{% static 'imc/js/script02.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.11/dist/htmx.min.js" integrity="sha384-2OatzQy1H+Zd/IIrjr1TcuDGqLXeHhbooAyJY1KdQMKnr4LZ22k31GBLdYKHmVjg" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -16,7 +16,7 @@
     <main>
         <section class="hero is-link">
             <div class="hero-body">
-                <form id="imc-form"  action="{% url 'imc:calcular_imc' %}" method="POST">
+                <form id="imc-form"  action="{% url 'imc:calcular_imc'%}" method="POST">
                     {% csrf_token %}
                     <label class="label">Altura (m):</label>
                     <div class="control">
@@ -28,10 +28,13 @@
                     </div>
                     <button type="submit" class="button is-primary">Calcular IMC</button>
                 </form>
-                <div id="requisicao_imc" data-url= "{% url  'imc:mensagem' %}"></div>
-                <button class="button is-link" onclick="carregarMensagem()"> receber Mensagem </button>
-                <p id="mensagem"></p>
+                <div id="requisicao_imc" data-url="{% url 'imc:mensagem'%}"></div>
+                <button class="button is-primary" hx-get="{% url 'imc:mensagem'%}" hx-target="#mensagem" >Receber Mensagem</button>
+                <div id="mensagem"></div>
             </div>
+        </section>
+        <section class="section" id="resultado">
+
         </section>
     </main>
     <footer class="footer">
